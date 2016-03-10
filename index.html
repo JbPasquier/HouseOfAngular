@@ -20,12 +20,15 @@
         </div>
         <div class="container-fluid" ng-controller='cardController'>
         <div class="row">
-            <pre class='col-xs-3'>
+            <pre class='col-xs-3' ng-hide='PlayerTurn=="2"'>
                 <h4>Joueur 1 - En main</h4>
                 <div ng-repeat='card in playerOneHand'><a href='#' ng-click='play(1,$index)'>{{card[1]}} de {{card[0]}}</a></div>
             </pre>
 
-                <div class='col-xs-6 text-center'>
+                <div class='col-xs-9 text-center'>
+                    <h3>
+                        {{result}}
+                    </h3>
                     <h3>
                         1 a joué :<br />
                         {{playerOnePlay}}
@@ -35,7 +38,7 @@
                         {{playerTwoPlay}}
                     </h3>
                 </div>
-            <pre class='col-xs-3'>
+            <pre class='col-xs-3' ng-hide='PlayerTurn=="1"'>
                 <h4>Joueur 2 - En main</h4>
                 <div ng-repeat='card in playerTwoHand'><a href='#' ng-click='play(2,$index)'>{{card[1]}} de {{card[0]}}</a></div>
             </pre>

@@ -1,6 +1,8 @@
 function cardController($scope, $sce) {
     $scope.playerOnePlay = '';
     $scope.playerTwoPlay = '';
+    $scope.result = '';
+    $scope.PlayerTurn = '1';
     Object.prototype.shuffle = function() {
         var j, x, i;
         for (i = this.length; i; i -= 1) {
@@ -31,6 +33,13 @@ function cardController($scope, $sce) {
         'carreau',
         'trèfle'
     ];
+    $scope.checkStatus = function() {
+        /*function checkStatus() - Return true if player one won hand, false is player two won hand, then clear board*/
+        $scope.result = 'J1 : '+$scope.playerOnePlay+' - J2 : '+$scope.playerTwoPlay;
+        $scope.playerOnePlay = '';
+        $scope.playerTwoPlay = '';
+        return true;
+    };
     $scope.cardScope = [];
     angular.forEach($scope.colors, function(color) {
         angular.forEach($scope.cards, function(card, index) {
@@ -44,11 +53,14 @@ function cardController($scope, $sce) {
     $scope.playerTwoHand = $scope.cardScope.slice($scope.cardByPlayer, $scope.cardScope.length);
     $scope.play = function(player, cardIndex) {
         if (player === 1) {
+            $scope.PlayerTurn = '2';
             $scope.playerOnePlay = $scope.playerOneHand[cardIndex][1] + ' de ' + $scope.playerOneHand[cardIndex][0];
             $scope.playerOneHand.splice(cardIndex,1);
         } else {
+            $scope.PlayerTurn = '1';
             $scope.playerTwoPlay = $scope.playerTwoHand[cardIndex][1] + ' de ' + $scope.playerTwoHand[cardIndex][0];
             $scope.playerTwoHand.splice(cardIndex,1);
+            $scope.checkStatus();
         }
     };
 
