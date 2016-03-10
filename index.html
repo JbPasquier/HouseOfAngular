@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr" ng-app='HouseOfAngular'>
+    <head>
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title></title>
+        <link rel="stylesheet" href="./css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="./css/style.css"/>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-12 text-center">
+                    <h1>House Of Angular
+                        <small>A card game</small>
+                    </h1>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" ng-controller='cardController'>
+        <div class="row">
+            <pre class='col-xs-3'>
+                <h4>Joueur 1 - En main</h4>
+                <div ng-repeat='card in playerOneHand'><a href='#' ng-click='play(1,$index)'>{{card[1]}} de {{card[0]}}</a></div>
+            </pre>
+
+                <div class='col-xs-6 text-center'>
+                    <h3>
+                        1 a joué :<br />
+                        {{playerOnePlay}}
+                    </h3>
+                    <h3>
+                        2 a joué :<br />
+                        {{playerTwoPlay}}
+                    </h3>
+                </div>
+            <pre class='col-xs-3'>
+                <h4>Joueur 2 - En main</h4>
+                <div ng-repeat='card in playerTwoHand'><a href='#' ng-click='play(2,$index)'>{{card[1]}} de {{card[0]}}</a></div>
+            </pre>
+        </div>
+        </div>
+        <script src="js/libs/jquery.min.js"></script>
+        <script src="js/libs/bootstrap.min.js"></script>
+        <script src="js/libs/angular.min.js"></script>
+        <script src="https://code.angularjs.org/1.5.0/i18n/angular-locale_fr-fr.js"></script>
+        <script src="js/controllers/cardController.js"></script>
+        <script src="app.js"></script>
+    </body>
+</html>
